@@ -1,4 +1,5 @@
 import datetime
+import json
 
 import StationConstructor
 
@@ -27,6 +28,9 @@ def main():
             adjusted_information[station['station_id']]["Status"] = station
         else:
             failures.append(station)
+    with open('temp.txt', mode='w', ) as f:
+
+        json.dump(adjusted_information, f)
 
     stations = {}
     for key in adjusted_information.keys():
