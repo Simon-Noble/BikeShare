@@ -17,17 +17,15 @@ class CollectionManager:
     output_boundary: SaveToFileOutputBoundary
     interval_seconds: int
     max_duration_seconds: int
-    save_directory: str
 
     def __init__(self, data_gatherer: DataGatherer, text_receiver: TextOutputReceiver,
                  output_boundary: SaveToFileOutputBoundary, interval_seconds: int, max_duration_seconds: int,
-                 save_directory: str):
+                 ):
         self.data_gatherer = data_gatherer
         self.text_receiver = text_receiver
         self.output_boundary = output_boundary
         self.interval_seconds = interval_seconds
         self.max_duration_seconds = max_duration_seconds
-        self.save_directory = save_directory
 
     def run(self):
         start_time = datetime.datetime.now()
@@ -38,7 +36,6 @@ class CollectionManager:
 
             self.data_gatherer.gather()
 
-            self.output_boundary.update_file(self.save_directory+str(current_time.second))
             self.output_boundary.send(self.text_receiver.message)
 
             if (current_time - start_time) > datetime.timedelta(seconds=self.max_duration_seconds):

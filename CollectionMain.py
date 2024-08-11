@@ -10,9 +10,9 @@ def main():
     gatherer_output_boundary = TextDataOutputBoundary(gatherer_receiver)
     data_gatherer = DataGatherer(gatherer_output_boundary)
 
-    manager_output_boundary = SaveToFileOutputBoundary("data")
+    manager_output_boundary = SaveToFileOutputBoundary("data\ ")
     collection_manager = CollectionManager(data_gatherer, gatherer_receiver , manager_output_boundary,
-                                           5, 10, 'data\ ')
+                                           5, 100)
 
     collection_manager.run()
 
