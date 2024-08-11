@@ -12,9 +12,12 @@ from DataCollection.DataOutputBoundary import DataOutputBoundary
 class SaveToFileOutputBoundary(DataOutputBoundary):
     file_name: str
 
-    def __init__(self, file_name:str):
+    def __init__(self, file_name: str):
         self.file_name = file_name
 
     def send(self, message: pd.DataFrame):
-        with open(self.file_name) as f:
-            json.dump(message, f)
+        with open(self.file_name, mode='w') as f:
+            json.dump(message.to_json(), f)
+
+    def update_file(self, new_file: str):
+        self.file_name = new_file

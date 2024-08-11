@@ -19,11 +19,11 @@ class DataGatherer:
 
     def gather(self):
 
-        station_information = pd.read_json(requests.get('https://tor.publicbikesystem.net/ube/gbfs/v1/en'
-                                                        '/station_information').json())
+        station_information = requests.get('https://tor.publicbikesystem.net/ube/gbfs/v1/en'
+                                                        '/station_information').json()
 
-        station_status = pd.read_json(requests.get("https://tor.publicbikesystem."
-                                                   "net/ube/gbfs/v1/en/station_status").json())
+        station_status = requests.get("https://tor.publicbikesystem."
+                                                   "net/ube/gbfs/v1/en/station_status").json()
         adjusted_information = dict()
 
         for station in station_information['data']['stations']:
