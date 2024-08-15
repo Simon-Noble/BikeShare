@@ -4,7 +4,7 @@ Output boundary that just uses text and holds the information in an output recei
 """
 import pandas as pd
 
-from DataCollection.DataOutputBoundary import DataOutputBoundary
+from FileManager.DataOutputBoundary import DataOutputBoundary
 from DataCollection.TextOutputReceiver import TextOutputReceiver
 
 

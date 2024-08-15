@@ -7,19 +7,19 @@ import time
 import datetime
 
 from DataCollection.DataGatherer import DataGatherer
-from DataCollection.SaveToFileOutputBoundary import SaveToFileOutputBoundary
+from FileManager.SaveToFileInteractor import SaveToFileInteractor
 from DataCollection.TextOutputReceiver import TextOutputReceiver
 
 
 class CollectionManager:
     data_gatherer: DataGatherer
     text_receiver: TextOutputReceiver
-    output_boundary: SaveToFileOutputBoundary
+    output_boundary: SaveToFileInteractor
     interval_seconds: int
     max_duration_seconds: int
 
     def __init__(self, data_gatherer: DataGatherer, text_receiver: TextOutputReceiver,
-                 output_boundary: SaveToFileOutputBoundary, interval_seconds: int, max_duration_seconds: int,
+                 output_boundary: SaveToFileInteractor, interval_seconds: int, max_duration_seconds: int,
                  ):
         self.data_gatherer = data_gatherer
         self.text_receiver = text_receiver

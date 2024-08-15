@@ -8,7 +8,7 @@ and send it to the output boundary
 import requests
 import pandas as pd
 
-from DataCollection.DataOutputBoundary import DataOutputBoundary
+from FileManager.DataOutputBoundary import DataOutputBoundary
 
 
 class DataGatherer:
