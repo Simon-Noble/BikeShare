@@ -27,12 +27,12 @@ class SaveToFileInteractor(DataOutputBoundary):
         file_name = f'{time.year}-{time.month}-{time.day}-{time.hour}-{time.minute}-{time.second}'
 
         with open(self.directory+"directory", 'a') as f:
-            f.writelines(file_name)
+            f.writelines(file_name+"\n")
 
 
         total_path = self.directory + file_name
 
         with open(total_path, mode='w') as f:
-            json.dump(message.to_json(), f)
+            f.write(message.to_json())
 
 
