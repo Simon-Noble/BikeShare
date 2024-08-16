@@ -36,11 +36,11 @@ class ReadFileInteractor:
         """
 
         with open(self.directory+'directory', 'r') as f:
-            file_name = f.readline()
-            for _ in range(self.index):
-                file_name = f.readline()
+            file = f.readlines()
+            file_name = file[self.index]
+            self.index += 1
 
-        with open(self.directory+file_name[:-1], 'r') as f:
+        with open(self.directory + file_name[:-1], 'r') as f:
             values = json.load(f)
 
         return values

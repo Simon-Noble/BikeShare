@@ -19,17 +19,18 @@ class MapGenerationInteractor(MapGenerationInputBoundary):
         """
         First collect the desired features from the data, then graph them
         """
-
         featurefied_data = []
 
         for station in data:
             new_entry = {}
             for feature in self.features + ['lat', 'lon']:
                 new_entry[feature] = data[station]['Information'][feature]
+            new_entry['num_bikes_available'] = data[station]['Status']['num_bikes_available']
+            new_entry['capacity'] = data[station]['Information']['capacity']
             featurefied_data.append(new_entry)
 
         fig = px.scatter_mapbox(featurefied_data, lat='lat',lon='lon',  title='Toronto Bike Share Locations',
-                                mapbox_style="open-street-map", )
+                                mapbox_style="open-street-map", color="num_bikes_available", size='capacity' )
         for feature in self.features:
             fig.update_layout(feature=feature)
         fig.write_html('maptest.html')
